@@ -1,51 +1,36 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18'  // Use Node.js 18 Docker image
-        }
-    }
+    agent any
 
     environment {
         DIRECTORY_PATH = "/path/to/source/code"
         TESTING_ENVIRONMENT = "TestEnv"
-        PRODUCTION_ENVIRONMENT = "AkshitGoyal"
-        NETLIFY_AUTH_TOKEN = credentials('netlify_token')
-        NETLIFY_SITE_ID = "201a01bb-3bc6-4fac-a5ad-b9f45c416bc9"
+        PRODUCTION_ENVIRONMENT = "YourName"  // Replace with your name
     }
 
     stages {
-        stage('Install Dependencies') {
+        stage('Build') {
             steps {
-                echo "Installing project dependencies..."
-                sh 'npm install'
-            }
-        }
-
-        stage('Build React App') {
-            steps {
-                echo "Building the React app..."
-                sh 'npm run build'
+                echo "Fetch the source code from ${DIRECTORY_PATH}"
+                echo "Compile the code and generate any necessary artifacts"
             }
         }
 
         stage('Test') {
             steps {
-                echo "Running unit tests..."
-                sh 'npm test'
+                echo "Run unit tests"
+                echo "Run integration tests"
             }
         }
 
         stage('Code Quality Check') {
             steps {
-                echo "Checking the quality of the code..."
+                echo "Check the quality of the code"
             }
         }
 
-        stage('Deploy to Netlify') {
+        stage('Deploy') {
             steps {
-                echo "Deploying to Netlify..."
-                sh 'npm install -g netlify-cli'  // Ensure Netlify CLI is installed
-                sh 'netlify deploy --prod --dir=build --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID'
+                echo "Deploy the application to ${TESTING_ENVIRONMENT}"
             }
         }
 
@@ -58,7 +43,7 @@ pipeline {
 
         stage('Deploy to Production') {
             steps {
-                echo "Deploying the application to ${PRODUCTION_ENVIRONMENT}"
+                echo "Deploy the application to ${PRODUCTION_ENVIRONMENT}"
             }
         }
     }
