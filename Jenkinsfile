@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18'  // Use Node.js 18 Docker image
+        }
+    }
 
     environment {
         DIRECTORY_PATH = "/path/to/source/code"
@@ -10,6 +14,12 @@ pipeline {
     }
 
     stages {
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/your-repo/react-project.git'  // Replace with your GitHub repo
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 echo "Installing project dependencies..."
@@ -40,6 +50,7 @@ pipeline {
         stage('Deploy to Netlify') {
             steps {
                 echo "Deploying to Netlify..."
+                sh 'npm install -g netlify-cli'  // Ensure Netlify CLI is installed
                 sh 'netlify deploy --prod --dir=build --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID'
             }
         }
