@@ -4,7 +4,7 @@ pipeline {
     environment {
         DIRECTORY_PATH = "/path/to/source/code"
         TESTING_ENVIRONMENT = "TestEnv"
-        PRODUCTION_ENVIRONMENT = "YourName"  // Replace with your name
+        PRODUCTION_ENVIRONMENT = "AkshitGoyal"
     }
 
     stages {
