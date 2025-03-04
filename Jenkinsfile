@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DIRECTORY_PATH = "/path/to/source/code"
-        TESTING_ENVIRONMENT = "TestEnv"
+        TESTING_ENVIRONMENT = "Netlify"
         PRODUCTION_ENVIRONMENT = "AkshitGoyal"
     }
 
