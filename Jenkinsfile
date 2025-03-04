@@ -14,12 +14,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/Akshit051604/Task-5P-For-jenkin-Pipeline.git'  // Replace with your GitHub repo
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 echo "Installing project dependencies..."
