@@ -4,7 +4,7 @@ pipeline {
     environment {
         DIRECTORY_PATH = "/path/to/source/code"
         TESTING_ENVIRONMENT = "Netlify"
-        PRODUCTION_ENVIRONMENT = "AkshitGoyal"
+        PRODUCTION_ENVIRONMENT = "Akshit Goyal"
     }
 
     stages {
